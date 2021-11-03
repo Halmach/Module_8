@@ -22,6 +22,28 @@ namespace Module_8
 
                 }
             }
+
+            GetCatalogs();
+        }
+
+        static void GetCatalogs()
+        {
+            string dirName = @"C://";
+            if (Directory.Exists(dirName))
+            {
+                Console.WriteLine("Папки:");
+                string[] dirs = Directory.GetDirectories(dirName);
+                foreach (string d in dirs)
+                {
+                    Console.WriteLine(d);
+                }
+                Console.WriteLine("Файлы:");
+                string[] files = Directory.GetFiles(dirName);
+                foreach (string s in files)
+                {
+                    Console.WriteLine(s);
+                }
+            }
         }
     }
 
