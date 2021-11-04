@@ -7,7 +7,7 @@ namespace Module_8
     class Program
     {
         static void Main(string[] args)
-        {
+        {/*
             DriveInfo[] drives = DriveInfo.GetDrives();
 
             foreach (DriveInfo drive in drives)
@@ -21,29 +21,40 @@ namespace Module_8
                     Console.WriteLine($"Метка:{drive.VolumeLabel}");
 
                 }
-            }
+            }*/
 
-            GetCatalogs();
+          //  GetCatalogs();
+          string dirName = @"C://";
+          if (Directory.Exists(dirName))
+          {
+              Console.WriteLine("Количество файлов и папок в "+ dirName + Environment.NewLine + Directory.GetDirectories(dirName).Length + Directory.GetFiles(dirName).Length);
+          }
         }
 
         static void GetCatalogs()
         {
+            int fileCnt = 0;
+            int directoryCnt = 0;
             string dirName = @"C://";
             if (Directory.Exists(dirName))
             {
-                Console.WriteLine("Папки:");
+             //   Console.WriteLine("Папки:");
                 string[] dirs = Directory.GetDirectories(dirName);
                 foreach (string d in dirs)
                 {
-                    Console.WriteLine(d);
+                    // Console.WriteLine(d);
+                    fileCnt++;
                 }
-                Console.WriteLine("Файлы:");
+          //      Console.WriteLine("Файлы:");
                 string[] files = Directory.GetFiles(dirName);
                 foreach (string s in files)
                 {
-                    Console.WriteLine(s);
+                    //  Console.WriteLine(s);
+                    directoryCnt++;
                 }
             }
+            Console.WriteLine("File num: " + fileCnt);
+            Console.WriteLine("Directory num: " + directoryCnt);
         }
     }
 
