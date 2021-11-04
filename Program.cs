@@ -24,11 +24,26 @@ namespace Module_8
             }*/
 
           //  GetCatalogs();
-          string dirName = @"C://";
-          if (Directory.Exists(dirName))
+          string dirName = @"C:\SomeDir";
+          string subDirName = @"Splinter Cell\Double_Agent";
+
+          try
           {
-              Console.WriteLine("Количество файлов и папок в "+ dirName + Environment.NewLine + Directory.GetDirectories(dirName).Length + Directory.GetFiles(dirName).Length);
+                Console.WriteLine("Папка не создана");
+                DirectoryInfo newDirectory = new DirectoryInfo(dirName); 
+                if(!newDirectory.Exists) newDirectory.Create();
+                else Console.WriteLine(newDirectory.GetDirectories().Length + newDirectory.GetFiles().Length);
+                Console.WriteLine("Папка  создана");
+                Console.WriteLine(newDirectory.GetDirectories().Length + newDirectory.GetFiles().Length);
+                Console.WriteLine("Создана вложенная папка");
+                newDirectory.CreateSubdirectory(subDirName);
+                Console.WriteLine(newDirectory.GetDirectories().Length + newDirectory.GetFiles().Length);
           }
+          catch (Exception e)
+          {
+                Console.WriteLine(e.Message);
+          }
+
         }
 
         static void GetCatalogs()
