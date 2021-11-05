@@ -12,8 +12,15 @@ namespace Module_8
         {
 
             string filePath = @"C:\Users\pc\source\dev\Module_8\Module_8\Program.cs";
+      //      FileInfo file = new FileInfo(filePath);
+           
             if (File.Exists(filePath))
             {
+                using (StreamWriter sw = new StreamWriter(filePath, true))
+                {
+                    sw.WriteLine("// " + Convert.ToString(DateTime.Now));
+                    sw.Close();
+                }
                 using (StreamReader sr = File.OpenText(filePath))
                 {
                     string str = "";
@@ -176,3 +183,5 @@ namespace Module_8
       
     }
 }
+// 05.11.2021 23:30:14
+// 05.11.2021 23:31:18
