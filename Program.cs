@@ -41,7 +41,21 @@ namespace Module_8
 
 
 
+        internal static void fileWrite()
+        {
+            try
+            {
+                using (BinaryWriter bw = new BinaryWriter(File.Open(filePath, FileMode.Append)))
+                {
+                    bw.Write("\n Файл изменен " + DateTime.Now + " на компьютере " + Environment.OSVersion);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
+        }
 
 
 
@@ -55,6 +69,7 @@ namespace Module_8
         {
 
             BinaryRW.fileReader();
+            BinaryRW.fileWrite();
         }
     }
 }
